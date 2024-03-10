@@ -1,0 +1,237 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Inconsolata");
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: black;
+}
+
+.the-fucking-all-of-it {
+    background-image: url("images/universe.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    font-family: "Comic Sans MS", sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    padding: 0;
+    justify-items: center;
+}
+
+.getdizzywithit {
+    animation-name: gettinDizzy;
+    animation-duration: 1.5s;
+}
+
+.bodyspooky {
+    background-color: black;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    font-family: "Times New Roman", sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+    justify-content: center;
+    height: 100vh;
+    overflow: auto;
+    padding: 0;
+    justify-items: center;
+}
+
+.quiz-container-spooky {
+    background: white;
+    border-radius: 10px;
+    width: 700px;
+    max-width: 95vw;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    grid-column: 1;
+    }
+
+.quiz-header-spooky {
+    padding: 4rem;
+    color: black;
+}
+
+
+
+.quiz-container {
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+    width: 700px;
+    max-width: 95vw;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    grid-column: 1;
+    box-shadow: -2px 2px #000000, -4px 4px #ff00fe, -6px 6px #000000, -8px 8px #ff00fe, -10px 10px #000000, -12px 12px #ff00fe, -14px 14px #000000, -16px 16px #ff00fe, -18px 18px #000000;
+}
+
+.site-header {
+    padding: 60px;
+    margin: 0;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background: #1abc9c;
+    color: white;
+    font-size: 25px;
+    position: relative;
+    width: 100vw;
+    align-items: center;
+    grid-column: 1;
+    background-image: url("images/flames.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    text-shadow: -2px 2px #ff0000, -4px 4px #ff00f7, -6px 6px #5d00ff, -8px 8px #0035ff, -10px 10px #00d3ff, -12px 12px #00ff22, -14px 14px #eeff00, -16px 16px #ff9800, -18px 18px #ff0000;
+}
+
+.site-header h1 {
+}
+
+.dragon-icon1 {
+    width: 200px;
+    float: right;
+    margin-top: 0px;
+}
+
+.dragon-icon2 {
+    width: 200px;
+    float: left;
+    margin-top: 0px;
+    transform: scaleX(-1);
+}
+
+.clawicon {
+    width: 300px;
+    margin-top: 0px;
+}
+
+.site-footer {
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 13px;
+    position: relative;
+    width: 100vw;
+    grid-column: 1;
+    background-image: url("images/footernight.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+}
+
+.quiz-header-above {
+    color: white;
+    text-shadow: 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 20px #000000, 0 0 20px #000000, 0 0 20px #000000;
+}
+
+.quiz-header {
+    padding: 4rem;
+    color: white;
+    text-shadow: 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 20px #000000, 0 0 20px #000000, 0 0 20px #000000;
+}
+
+h2{
+    padding: 1rem;
+    text-align: center;
+    margin: 0;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+ul li{
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+ul li label{
+    cursor: pointer;
+}
+button {
+    background-color: darkviolet;
+    color: white;
+    border: none;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: inherit;
+    padding: 1.3rem;
+    box-shadow: 0 9px #999;
+}
+button:hover {
+    background-color: black;
+}
+button:active{
+    background-color: black;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+@keyframes gettinDizzy{
+    0% {
+        transform: scaleX(1.5);
+    }
+
+    10% {
+        transform: skewX(-40deg);
+    }
+
+    20% {
+        transform: scaleX(.4);
+    }
+
+    30% {
+        transform: skewY(-70deg);
+    }
+
+    40% {
+        transform: scaleX(1.6);
+    }
+
+    50% {
+        transform: skewX(-20deg);
+    }
+
+    60% {
+        transform: scaleY(1.6);
+    }
+
+    70% {
+        transform: skewY(-20deg);
+        transform: skewX(50deg);
+    }
+
+    80% {
+        transform: skewX(0deg);
+        transform: skewY(0deg);
+    }
+
+    90% {
+        transform: skewY(-10deg);
+    }
+
+    100% {
+        transform: skewY(0deg);
+        transform: skewX(0deg);
+    }
+
+}
