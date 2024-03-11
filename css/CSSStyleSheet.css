@@ -48,6 +48,23 @@ body {
     justify-items: center;
 }
 
+.bodyspookyextra {
+    background-image: url("images/benharrisonspooky.png");
+    background-repeat: repeat;
+    background-size: 150px;
+    background-attachment: fixed;
+    font-family: "Times New Roman", sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+    justify-content: center;
+    height: 100vh;
+    overflow: auto;
+    padding: 0;
+    justify-items: center;
+    animation: moveIt 13s linear infinite, enterBen 10s;
+}
+
 .quiz-container-spooky {
     background: white;
     border-radius: 10px;
@@ -77,6 +94,7 @@ body {
     margin-bottom: 20px;
     overflow: hidden;
     position: relative;
+    align-self: center;
     grid-column: 1;
     box-shadow: -2px 2px #000000, -4px 4px #ff00fe, -6px 6px #000000, -8px 8px #ff00fe, -10px 10px #000000, -12px 12px #ff00fe, -14px 14px #000000, -16px 16px #ff00fe, -18px 18px #000000;
 }
@@ -110,16 +128,37 @@ body {
     margin-top: 0px;
 }
 
+.resultimg {
+    width: 250px;
+}
+
 .dragon-icon2 {
     width: 200px;
     float: left;
     margin-top: 0px;
     transform: scaleX(-1);
 }
+.benharrison {
+    width: 200px;
+    float: left;
+    margin-right: 50px;
+}
 
 .clawicon {
     width: 300px;
     margin-top: 0px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .dragon-icon1 {
+        float: none;
+    }
+    .dragon-icon2 {
+        float: none;
+    }
+    .benharrison {
+        float: none;
+    }
 }
 
 .site-footer {
@@ -146,6 +185,14 @@ body {
 .quiz-header {
     padding: 4rem;
     color: white;
+    text-shadow: 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 20px #000000, 0 0 20px #000000, 0 0 20px #000000;
+}
+
+.quiz-header-end {
+    padding: 4rem;
+    color: white;
+    align-items: center;
+    text-align: center;
     text-shadow: 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 20px #000000, 0 0 20px #000000, 0 0 20px #000000;
 }
 
@@ -184,6 +231,14 @@ button:active{
     background-color: black;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+}
+
+.annoyingbutton {
+    display: none;
+}
+
+.sortofannoyingbutton {
+    display: block;
 }
 
 @keyframes gettinDizzy{
@@ -225,8 +280,12 @@ button:active{
         transform: skewY(0deg);
     }
 
-    90% {
-        transform: skewY(-10deg);
+    87% {
+        transform: rotateX(-60);
+    }
+
+    87% {
+        transform: rotateX(40);
     }
 
     100% {
@@ -234,4 +293,23 @@ button:active{
         transform: skewX(0deg);
     }
 
+}
+
+@keyframes enterBen {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveIt {
+    from {
+        background-position: bottom left;
+    }
+
+    to {
+        background-position: top right;
+    }
 }

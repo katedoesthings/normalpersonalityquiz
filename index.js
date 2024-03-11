@@ -141,6 +141,7 @@ const quizData = [
             "Ben Harrison"
         ],
         correct: "d",
+        ben: "yeah"
     },
     {
         question: "lol u know it. She's gonna be SO mad when she sees this!!! XD",
@@ -155,6 +156,7 @@ const quizData = [
             "c"
         ],
         correct: "d",
+        ben: "unyeah"
     },
     {
         question: "She TOTALLY deserves it!!!! She knew that I had a crush on Ben Harrison, but then SHE asked him out first!!!",
@@ -410,7 +412,8 @@ const quizData = [
             "",
             "....maybe we'd kiss???? ///u_u///"
         ],
-        correct: "d"
+        correct: "d",
+        bigben: "yeah"
     },
     {
         question: "What will you do?",
@@ -476,6 +479,7 @@ let currentQuiz = 0;
 let score = 0;
 let spookyActive = false;
 let urColor = undefined;
+let whoops = false;
 
 function deselectAnswers() {
     document.getElementsByName("answer").forEach((answer) => { answer.checked = false });
@@ -517,22 +521,22 @@ function incrementTally(theAnswer) {
 function tallyTotal() {
     let theScore = Math.max(c, md, sy, nge, t2, cr);
     if (theScore == c) {
-        return "Cerulean";
+        return "<h1>u r: Cerulean </h1><img class=\"resultimg\" src=\"css/images/cerulean.jpg\"><h2> have you ever tried having fun?? u should do it sometimes!!! XD lol jk, u just know what u like and u don't like to stray outside of that. i respect u!!! but if we met irl we'd probably get coffee or smthn and not know what 2 talk abt.</h2>";
     }
     if (theScore == md) {
-        return "Microwave Darf";
+        return "<h1>u r: Microwave Darf</h1><img class=\"resultimg\" src=\"css/images/microwave.jpg\"><h2> omg lolz XD so random!!!!!! ur JUST like me!!! u LOVE having fun on the internet and ur not afraid to be urself!!! if we met irl we'd be BESTIES (real friendz--not like Katrina) and we'd hang out all the time and eat snacks 2gether!! :D</h2>";
     }
     if (theScore == sy) {
-        return "Secret Yellow";
+        return "<h1>u r: Secret Yellow</h1><img class=\"resultimg\" src=\"css/images/secretyellow.jpg\"><h2> ooooooo....ur sooooo mysterious!! ur a bit unusual but in a cool, aloof kind of way...ur the kind of person who would rly LOVE The Knowledge I bet!!! plz take it from me. please. Please. Please Take The Knowledge Away From Me</h2>";
     }
     if (theScore == nge) {
-        return "Neon Genesis Evangelion";
+        return "<h1>u r: Neon Genesis Evangelion</h1><img class=\"resultimg\" src=\"css/images/evangelion.jpg\"><h2> lol ok I've never seen this show XD but ur just like it I'm sure!!! u have a strong sense of purpose and u like fighting big robots i guess? u care a lot abt following the rulez, but not in a lame kind of way. if we met irl I bet we'd be cool with each other but I'm probably 2 random 4 u!!! XD</h2>";
     }
     if (theScore == t2) {
-        return "2 Tracksuits";
+        return "<h1>u r: 2 Tracksuits</h1><img class=\"resultimg\" src=\"css/images/tracksuits.jpg\"><h2> what's better than 1 tracksuit?? 2 tracksuits!!!!!! :D u love art and singing and dancing and hanging out with ur friends!!! so wholesome. I bet ur like....a super famous pop star!!! a pop star taking my quiz?? o.O we're both famous!!! if we met irl we'd probably sing lots of showtunes 2gether XD</h2>";
     }
     if (theScore == cr) {
-        return "Crab Rangoon";
+        return "<h1>u r: Crab Rangoon</h1><img class=\"resultimg\" src=\"css/images/empanada.jpg\"><h2>crab rangoons r my favorite!!1! they r SO loyal and kind, even if they get a little confused sometimes....ur just like that!!! i bet ur like a sweet, lost puppy. awooooooooo!!! XD if we met irl we'd be such good friendsssssss and I'd get u 2 do my homework 4 me XD</h2>";
     }
 }
 function loadQuiz() {
@@ -594,8 +598,10 @@ function submitButtonFunc() {
         if (quizData[currentQuiz].unspooky === "yeah") {
             spookyActive = false;
             document.getElementById("allofit").classList.remove("bodyspooky");
+            document.getElementById("allofit").classList.remove("bodyspookyextra");
             document.getElementById("allofit").classList.add("the-fucking-all-of-it");
             document.getElementById("quiz").classList.remove("quiz-container-spooky");
+            document.getElementById("allofit").classList.remove("getdizzywithit");
             document.getElementById("quiz").classList.add("quiz-container");
             document.getElementById("quizheader").classList.remove("quiz-header-spooky");
             document.getElementById("quizheader").classList.add("quiz-header");
@@ -623,20 +629,29 @@ function submitButtonFunc() {
         if (currentQuiz < quizData.length) { loadQuiz(); }
         else {
             theResult = tallyTotal();
-            if (score < 4) {
-                document.getElementById("quizheader").innerHTML = `
-                <h2> you answered ` + theResult + `/` + quizData.length + ` questions correctly</h2>
-            <button onclick="history.go(0)">Play Again</button>
-            `;
-            }
-            else if (score === 4) {
-                document.getElementById("quizheader").innerHTML = `
-                <h2> you answered ` + score + `/` + quizData.length + ` questions correctly. Brag about it I guess lol</h2>
-            <button onclick="history.go(0)">Play Again</button>
-            `;
-            }
+            document.getElementById("quizheader").classList.add("quiz-header-end");
+            document.getElementById("quizheader").classList.remove("quiz-header");
+            document.getElementById("quizheader").innerHTML = theResult + "<h1><br>thanks 4 taking my quiz!!!!! Thanks 2 grant ferguson, u know what u did XD <br> u should take another quiz I like a lot!! linky below<h1><h2><a href=\"https://ezra-szanton.itch.io/be-honest\" target=\"_blank\">What Kind of Toy Are You</a></h2>";
+            document.getElementById("submit").style.display = "none";
+            document.getElementById("startover").style.display = "block";
+            
+        }
+
+        if (quizData[currentQuiz].ben === "yeah") {
+            document.getElementById("benharrisonimg").hidden = false;
+        }
+        else if (quizData[currentQuiz].ben === "unyeah") {
+            document.getElementById("benharrisonimg").hidden = true;
+        }
+        if (quizData[currentQuiz].bigben === "yeah") {
+            document.getElementById("allofit").classList.remove("bodyspooky");
+            document.getElementById("allofit").classList.add("bodyspookyextra");
         }
     }
+}
+
+function letsGo() {
+    history.go(0);
 }
 
 //submitButton.addEventListener("click", submitButtonFunc());
