@@ -69,11 +69,12 @@ body {
     border-radius: 10px;
     width: 700px;
     max-width: 95vw;
+    font-size: 1em;
     margin-top: 20px;
     margin-bottom: 20px;
     overflow: hidden;
     position: relative;
-    }
+}
 
 .quiz-header-spooky {
     padding: 30px;
@@ -89,6 +90,7 @@ body {
     width: 700px;
     max-width: 95vw;
     margin-top: 20px;
+    font-size: 1em;
     margin-bottom: 20px;
     overflow: hidden;
     position: relative;
