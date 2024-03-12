@@ -631,7 +631,7 @@ function submitButtonFunc() {
             theResult = tallyTotal();
             document.getElementById("quizheader").classList.add("quiz-header-end");
             document.getElementById("quizheader").classList.remove("quiz-header");
-            document.getElementById("quizheader").innerHTML = theResult + "<h1><br>thanks 4 taking my quiz!!!!! Thanks 2 grant ferguson, u know what u did XD <br> u should take another quiz I like a lot!! linky below<h1><h2><a href=\"https://ezra-szanton.itch.io/be-honest\" target=\"_blank\">What Kind of Toy Are You</a></h2>";
+            document.getElementById("quizheader").innerHTML = theResult + "<h1><br>thanks 4 taking my quiz!!!!! Thanks 2 grant ferguson, u know what u did XD <br> u should take another quiz I like a lot that some1 else made!! linky below<h1><h2><a href=\"https://ezra-szanton.itch.io/be-honest\" target=\"_blank\">What Kind of Toy Are You</a></h2>";
             document.getElementById("submit").style.display = "none";
             document.getElementById("startover").style.display = "block";
             
@@ -639,9 +639,11 @@ function submitButtonFunc() {
 
         if (quizData[currentQuiz].ben === "yeah") {
             document.getElementById("benharrisonimg").hidden = false;
+            document.getElementById("benharrisonimg").style.display = "block";
         }
         else if (quizData[currentQuiz].ben === "unyeah") {
             document.getElementById("benharrisonimg").hidden = true;
+            document.getElementById("benharrisonimg").style.display = "none";
         }
         if (quizData[currentQuiz].bigben === "yeah") {
             document.getElementById("allofit").classList.remove("bodyspooky");
