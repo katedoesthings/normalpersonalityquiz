@@ -150,12 +150,12 @@ body {
 @media (min-width: 320px) and (max-width: 767px) {
     .dragon-icon1 {
         float: none;
-        width: 70px;
+        width: 100px;
     }
 
     .dragon-icon2 {
         float: none;
-        width: 70px;
+        width: 100px;
     }
 
     .benharrison {
@@ -165,7 +165,7 @@ body {
     }
 
     .site-header {
-        font-size: .7em;
+        font-size: .85em;
     }
 }
 
