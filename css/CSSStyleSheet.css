@@ -106,7 +106,7 @@ body {
     overflow-wrap: break-word;
     background: #1abc9c;
     color: white;
-    font-size: 25px;
+    font-size: 1.6em;
     position: relative;
     width: 100vw;
     align-items: center;
@@ -151,13 +151,19 @@ body {
     .dragon-icon1 {
         float: none;
     }
+
     .dragon-icon2 {
         float: none;
     }
+
     .benharrison {
         float: none;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .site-header {
+        font-size: .5em;
     }
 }
 
@@ -180,6 +186,8 @@ body {
 
 .quiz-header-above {
     color: white;
+    align-items: center;
+    text-align: center;
     text-shadow: 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 10px #ff00fe, 0 0 20px #000000, 0 0 20px #000000, 0 0 20px #000000;
 }
 
