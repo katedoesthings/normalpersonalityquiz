@@ -72,6 +72,7 @@ function populateIngredients(theKey) {
         for (var key in holdoverIngredients) {
             if (holdoverIngredients[key] == theRecipes[theKey].ingredients[ingredient]) {
                 isHoldover = true;
+                document.getElementById(theRecipes[theKey].ingredients[ingredient] + 'label').style.color = "green";
             }
         }
         if (!isHoldover) {
