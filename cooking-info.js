@@ -18,14 +18,24 @@ let theRecipes = [
     }
 ]
 
+var curRecipeKey = 0;
+
 function testFunction() {
     document.getElementById('ingredientslist').innerHTML = theRecipes[1].ingredients;
 }
 
 function testFunction2(theRecipeName) {
+    for (var key in document.getElementById("recipeNames").children) {
+        if (theRecipeName == document.getElementById("recipeNames").children[key].id) {
+            //document.getElementById("recipeNames").children[key].classList.add("itme");
+        }
+    }
+
+
     for (var key in theRecipes) {
         if (theRecipes[key].name == theRecipeName) {
-            document.getElementById('recipeBehavior').innerHTML = theRecipes[key].name;
+            document.getElementById('recipeHeader').innerHTML = theRecipes[key].name;
+            curRecipeKey = key;
             //document.getElementById('ingredientslist').innerHTML = theRecipes[key].ingredients;
             populateIngredients(key);
             sortAndHighlightIngredients();
@@ -52,9 +62,9 @@ function populateIngredients(theKey) {
     var ingredientListInternal = [];
     var holdoverIngredients = [];
 
-    for (var key in document.getElementById('ingredientslist').children) {
-        if (document.getElementById('ingredientslist').children[key].type == "checkbox" && document.getElementById('ingredientslist').children[key].checked == true) {
-            holdoverIngredients.push(document.getElementById('ingredientslist').children[key].id);
+    for (var key in document.getElementById('groceryList').children) {
+        if (document.getElementById('groceryList').children[key].type == "checkbox") {
+            holdoverIngredients.push(document.getElementById('groceryList').children[key].id);
         }
     }
 
@@ -62,12 +72,9 @@ function populateIngredients(theKey) {
         document.getElementById('ingredientslist').removeChild(document.getElementById('ingredientslist').firstChild);
     }
 
-    for (var key in holdoverIngredients) {
-        createCheckboxes(holdoverIngredients[key], true, 'ingredientslist');
-    }
-
     for (var ingredient in theRecipes[theKey].ingredients)
     {
+        createCheckboxes(theRecipes[theKey].ingredients[ingredient], false, 'ingredientslist');
         isHoldover = false;
         for (var key in holdoverIngredients) {
             if (holdoverIngredients[key] == theRecipes[theKey].ingredients[ingredient]) {
@@ -75,27 +82,6 @@ function populateIngredients(theKey) {
                 document.getElementById(theRecipes[theKey].ingredients[ingredient] + 'label').style.color = "green";
             }
         }
-        if (!isHoldover) {
-            createCheckboxes(theRecipes[theKey].ingredients[ingredient], false, 'ingredientslist');
-        }
-        /*
-        var checkbox = document.createElement('input');
-        checkbox.type = "checkbox";
-        checkbox.value = "false";
-        checkbox.id = theRecipes[theKey].ingredients[ingredient];
-        //checkbox.addEventListener("click", onCheckboxChange);
-
-        var label = document.createElement('label')
-        label.htmlFor = theRecipes[theKey].ingredients[ingredient];
-        label.id = theRecipes[theKey].ingredients[ingredient] + "label";
-        label.appendChild(document.createTextNode(theRecipes[theKey].ingredients[ingredient]));
-
-        linebreak = document.createElement("br");
-
-        document.getElementById('ingredientslist').appendChild(checkbox);
-        document.getElementById('ingredientslist').appendChild(label);
-        document.getElementById('ingredientslist').appendChild(linebreak);
-        */
     }
     var selectAllBtn = document.createElement('button');
     selectAllBtn.innerHTML = "Select All";
@@ -133,11 +119,11 @@ function createCheckboxes(theID, theValue, theOverallID) {
     document.getElementById(theOverallID).appendChild(linebreak);
 }
 
-function removeNonSelectedItems(theID) {
+function removeSelectedItems(theID) {
     var holdoverIngredients = [];
 
     for (var key in document.getElementById(theID).children) {
-        if (document.getElementById(theID).children[key].type == "checkbox" && document.getElementById(theID).children[key].checked == true) {
+        if (document.getElementById(theID).children[key].type == "checkbox" && document.getElementById(theID).children[key].checked != true) {
             holdoverIngredients.push(document.getElementById(theID).children[key].id);
         }
     }
@@ -147,19 +133,22 @@ function removeNonSelectedItems(theID) {
     }
 
     for (var key in holdoverIngredients) {
-        createCheckboxes(holdoverIngredients[key], true, theID);
+        createCheckboxes(holdoverIngredients[key], false, theID);
     }
+
+    populateIngredients(curRecipeKey);
+    
 }
 
 function sortAndHighlightIngredients() {
     var holdoverIngredients = [];
     var numOfHoldoverIngredients = [];
 
-    removeNonSelectedItems("groceryList");
+    //removeNonSelectedItems("groceryList");
 
-    for (var key in document.getElementById('ingredientslist').children) {
-        if (document.getElementById('ingredientslist').children[key].type == "checkbox" && document.getElementById('ingredientslist').children[key].checked == true) {
-            holdoverIngredients.push(document.getElementById('ingredientslist').children[key].id);
+    for (var key in document.getElementById('groceryList').children) {
+        if (document.getElementById('groceryList').children[key].type == "checkbox") {
+            holdoverIngredients.push(document.getElementById('groceryList').children[key].id);
         }
     }
 
@@ -190,7 +179,6 @@ function sortAndHighlightIngredients() {
     var list, y, switching, b, shouldSwitch;
     list = document.getElementById('recipeNames');
     switching = true;
-    linebreak = document.createElement("br");
     while (switching) {
         // start by saying: no switching is done:
         switching = false;
@@ -224,32 +212,111 @@ function sortAndHighlightIngredients() {
 }
 
 function onAddToListBtnClicked() {
-    var theresAButton;
+    var thereAreButtons = false;
+    var theresGroceries = false;
+
     for (var key in document.getElementById('ingredientslist').children) {
-        if (document.getElementById('ingredientslist').children[key].type == "checkbox" && document.getElementById('ingredientslist').children[key].checked == true) {
-            createCheckboxes(document.getElementById('ingredientslist').children[key].id, true, 'groceryList');
+        isHoldover = false;
+        if (document.getElementById('ingredientslist').children[key].type == "checkbox" && document.getElementById('ingredientslist').children[key].checked) {
+            for (var i in document.getElementById('groceryList').children) {
+                if (document.getElementById('groceryList').children[i].type == "checkbox") {
+                    if (document.getElementById('groceryList').children[i].id == document.getElementById('ingredientslist').children[key].id) {
+                        isHoldover = true;
+                    }
+                }
+            }
+            if (document.getElementById('ingredientslist').children[key].checked == true && !isHoldover) {
+                createCheckboxes(document.getElementById('ingredientslist').children[key].id, false, 'groceryList');
+            }
+            theresGroceries = true;
         }
     }
+
+    for (var key in document.getElementById('groceryListOverall').children) {
+        if (document.getElementById('groceryListOverall').children[key].id == "removeButton" && document.getElementById('groceryListOverall').children[key].id == "selectAllGroceriesButton" && 
+            document.getElementById('groceryListOverall').children[key].id == "deselectAllGroceriesButton") {
+            thereAreButtons = true;
+        }
+    }
+
+    if (!thereAreButtons && theresGroceries){
+        var removeButton = document.createElement('button');
+        removeButton.onclick = onRemoveFromListBtnClicked;
+        removeButton.innerHTML = "Remove From Grocery List";
+        removeButton.id = "removeButton";
+
+        var selectButton = document.createElement('button');
+        selectButton.onclick = onSelectAllBtnClickedGroceries;
+        selectButton.innerHTML = "Select All";
+        selectButton.id = "selectAllGroceriesButton";
+
+        var deselectButton = document.createElement('button');
+        deselectButton.onclick = onDeselectAllBtnClickedGroceries;
+        deselectButton.innerHTML = "Deselect All";
+        deselectButton.id = "deselectAllGroceriesButton";
+
+        document.getElementById('groceryListOverall').appendChild(selectButton);
+        document.getElementById('groceryListOverall').appendChild(deselectButton);
+        document.getElementById('groceryListOverall').appendChild(removeButton);
+    }
+
+    sortAndHighlightIngredients();
+    populateIngredients(curRecipeKey);
+}
+
+function onRemoveFromListBtnClicked() {
+    removeSelectedItems("groceryList");
+    var howManyItems = 0;
+    for (var i in document.getElementById('groceryList').children) {
+        if (document.getElementById('groceryList').children[i].type == "checkbox") {
+            howManyItems++;
+        }
+    }
+    if (howManyItems == 0) {
+        var removeThisButton = document.getElementById("removeButton");
+        document.getElementById('groceryListOverall').removeChild(removeThisButton);
+        removeThisButton = document.getElementById("selectAllGroceriesButton");
+        document.getElementById('groceryListOverall').removeChild(removeThisButton);
+        removeThisButton = document.getElementById("deselectAllGroceriesButton");
+        document.getElementById('groceryListOverall').removeChild(removeThisButton);
+    }
+    sortAndHighlightIngredients();
 }
 
 function onSelectAllBtnClicked() {
-    for (var key in document.getElementById('ingredientslist').children) {
-        if (document.getElementById('ingredientslist').children[key].type == "checkbox") {
-            document.getElementById('ingredientslist').children[key].checked = true;
+    selectAll('ingredientslist');
+}
+
+function onSelectAllBtnClickedGroceries(theID) {
+    selectAll('groceryList');
+}
+
+function selectAll(theID) {
+    for (var key in document.getElementById(theID).children) {
+        if (document.getElementById(theID).children[key].type == "checkbox") {
+            document.getElementById(theID).children[key].checked = true;
+        }
+    }
+    sortAndHighlightIngredients();
+}
+
+function deselectAll(theID) {
+    for (var key in document.getElementById(theID).children) {
+        if (document.getElementById(theID).children[key].type == "checkbox") {
+            document.getElementById(theID).children[key].checked = false;
         }
     }
     sortAndHighlightIngredients();
 }
 
 function onDeselectAllBtnClicked() {
-    for (var key in document.getElementById('ingredientslist').children) {
-        if (document.getElementById('ingredientslist').children[key].type == "checkbox") {
-            document.getElementById('ingredientslist').children[key].checked = false;
-        }
-    }
-    sortAndHighlightIngredients();
+    deselectAll('ingredientslist');
+}
+
+function onDeselectAllBtnClickedGroceries() {
+    deselectAll('groceryList');
 }
 
 function onCheckboxChange() {
-    sortAndHighlightIngredients();
+    //sortAndHighlightIngredients();
 }

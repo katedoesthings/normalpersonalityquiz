@@ -4,36 +4,12 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-* {
-  box-sizing: border-box;
-}
-
-/* Create three unequal columns that floats next to each other */
-.column {
-  float: left;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
-
-.left, .right {
-  width: 25%;
-}
-
-.middle {
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="cooking-info.js"></script>
+<link rel="stylesheet" href="css/RecipeBookStyleSheet.css">
 </head>
-<body>
+<body onload="testFunction2('Jello Surprise');">
 
 <h2>Three Unequal Columns</h2>
 
@@ -42,19 +18,28 @@
     <h2>Column 1</h2>
     <p>Some text..</p>
   </div>
-  <div class="column" id="recipeNames" style="background-color:#bbb;">
+  <div class="column" id="recipeNamesOverall" style="background-color:#bbb;">
+      <div class="btn-group" id="recipeNames">
     <input type="button" id="Jello Surprise" value="Jello Surprise" onclick="testFunction2('Jello Surprise'); ">
     <input type="button" id="Devilish Eggs" value="Devilish Eggs" onclick="testFunction2('Devilish Eggs'); ">
     <input type="button" id="Gorgo" value="Gorgo" onclick="testFunction2('Gorgo'); ">
     <input type="button" id="splimpo" value="splimpo" onclick="testFunction2('splimpo'); ">
+    </div>
   </div>
-  <div class="column" id="groceryList" style="background-color:#ccc;">
-    <h2>Grocery List</h2>
+  <div class="column" id="groceryListOverall" style="background-color:#ccc;">
+          <h2>Grocery List</h2>
+      <div id="groceryList" style="background-color:#ccc;">
+          </div>
 </div>
-  <div class="column right" id="recipeBehavior" style="background-color:#ccc;">
-    <h2>Column 3</h2>
+  <div class="column right" id="recipeBehaviorOverall" style="background-color:#ccc;">
+          <h2 id="recipeHeader">Column 3</h2>
+      <div id="recipeBehavior" style="background-color:#ccc;">
+          </div>
     <p>Some text..</p>
   </div>
+
+  <div id="stupidplaceholder">
+      </div>
 </div>
 
 </body>
