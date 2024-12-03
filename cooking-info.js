@@ -1,20 +1,28 @@
 // JavaScript source code]
 let theRecipes = [
     {
-        "name": "Jello Surprise",
-        "ingredients": ["plimbo", "grug", "potato", "tomato"]
+        "name": "Southwestern Scramble",
+        "ingredients": ["Ground Chicken", "Kale", "Lemon Juice", "Salt", "Frozen Corn", "Smoked Paprika", "Adobo", "Onion Powder", "Garlic Powder", "Red Bell Pepper", "Potato", "Tomatillo Salsa"],
+        "numIngredients": [1,null,2,3,1,6,9,2, null, null, null, null],
+        "recipe": "Fuckin I dunno"
     },
     {
-        "name": "Gorgo",
-        "ingredients": ["plimbo", "grug", "pemberton farms", "tomato"]
+        "name": "Thai-Inspired Salad Bowl",
+        "ingredients": ["Ground Beef", "Red Onion", "Red Cabbage", "Peanuts", "Shredded Carrots", "Mango", "Cilantro", "Bean Sprouts"],
+        "numIngredients": [1, null, 2, 3, 1, 6, 9, 2],
+        "recipe": "Fuckin I dunno, recommend serve with thai peanut sauce"
     },
     {
         "name": "splimpo",
-        "ingredients": ["plimborrrtrrr", "grug", "pemberton farms", "tomato"]
+        "ingredients": ["plimborrrtrrr", "grug", "pemberton farms", "tomato"],
+        "numIngredients": [1, null, 2, 3, 1, 6, 9, 2],
+        "recipe": "Fuckin I dunno, recommend serve with thai peanut sauce"
     },
     {
         "name": "Devilish Eggs",
-        "ingredients": ["plimborrrtrrr", "gaaaaaaag", "pemberton farms", "tomato"]
+        "ingredients": ["plimborrrtrrr", "gaaaaaaag", "pemberton farms", "tomato"],
+        "numIngredients": [1, null, 2, 3, 1, 6, 9, 2],
+        "recipe": "Fuckin I dunno, recommend serve with thai peanut sauce"
     }
 ]
 
@@ -24,7 +32,7 @@ function testFunction() {
     document.getElementById('ingredientslist').innerHTML = theRecipes[1].ingredients;
 }
 
-function testFunction2(theRecipeName) {
+function selectRecipe(theRecipeName) {
     for (var key in document.getElementById("recipeNames").children) {
         if (theRecipeName == document.getElementById("recipeNames").children[key].id) {
             //document.getElementById("recipeNames").children[key].classList.add("itme");
@@ -35,6 +43,7 @@ function testFunction2(theRecipeName) {
     for (var key in theRecipes) {
         if (theRecipes[key].name == theRecipeName) {
             document.getElementById('recipeHeader').innerHTML = theRecipes[key].name;
+            document.getElementById('recipeBehavior').innerHTML = theRecipes[key].recipe;
             curRecipeKey = key;
             //document.getElementById('ingredientslist').innerHTML = theRecipes[key].ingredients;
             populateIngredients(key);
@@ -74,7 +83,7 @@ function populateIngredients(theKey) {
 
     for (var ingredient in theRecipes[theKey].ingredients)
     {
-        createCheckboxes(theRecipes[theKey].ingredients[ingredient], false, 'ingredientslist');
+        createCheckboxes(theRecipes[theKey].ingredients[ingredient], theRecipes[theKey].numIngredients[ingredient], false, 'ingredientslist');
         isHoldover = false;
         for (var key in holdoverIngredients) {
             if (holdoverIngredients[key] == theRecipes[theKey].ingredients[ingredient]) {
@@ -100,7 +109,7 @@ function populateIngredients(theKey) {
     document.getElementById('ingredientslist').appendChild(addToListBtn);
 }
 
-function createCheckboxes(theID, theValue, theOverallID) {
+function createCheckboxes(theID, theNum, theValue, theOverallID) {
     var checkbox = document.createElement('input');
     checkbox.type = "checkbox";
     checkbox.id = theID;
@@ -112,19 +121,39 @@ function createCheckboxes(theID, theValue, theOverallID) {
     label.id = theID + "label";
     label.appendChild(document.createTextNode(theID));
 
+    if (theOverallID == "groceryList") {
+
+        var numberOfIngredient = document.createElement('input');
+        numberOfIngredient.type = "number";
+        numberOfIngredient.min = 0;
+        numberOfIngredient.value = theNum;
+        numberOfIngredient.id = theID + 'number';
+    }
+
+    else if (theOverallID == "ingredientslist") {
+        var numberOfIngredient = document.createElement('label');
+        if (theNum != null) {
+            numberOfIngredient.innerHTML = theNum + " ";
+        }
+        numberOfIngredient.id = theID + 'number';
+    }
+
     linebreak = document.createElement("br");
 
     document.getElementById(theOverallID).appendChild(checkbox);
+    document.getElementById(theOverallID).appendChild(numberOfIngredient);
     document.getElementById(theOverallID).appendChild(label);
     document.getElementById(theOverallID).appendChild(linebreak);
 }
 
 function removeSelectedItems(theID) {
     var holdoverIngredients = [];
+    var holdoverIngredientsNum = [];
 
     for (var key in document.getElementById(theID).children) {
         if (document.getElementById(theID).children[key].type == "checkbox" && document.getElementById(theID).children[key].checked != true) {
             holdoverIngredients.push(document.getElementById(theID).children[key].id);
+            holdoverIngredientsNum.push(document.getElementById(document.getElementById(theID).children[key].id + 'number').value);
         }
     }
 
@@ -133,7 +162,7 @@ function removeSelectedItems(theID) {
     }
 
     for (var key in holdoverIngredients) {
-        createCheckboxes(holdoverIngredients[key], false, theID);
+        createCheckboxes(holdoverIngredients[key], holdoverIngredientsNum[key], false, theID);
     }
 
     populateIngredients(curRecipeKey);
@@ -224,16 +253,16 @@ function onAddToListBtnClicked() {
                         isHoldover = true;
                     }
                 }
+                theresGroceries = true;
             }
             if (document.getElementById('ingredientslist').children[key].checked == true && !isHoldover) {
-                createCheckboxes(document.getElementById('ingredientslist').children[key].id, false, 'groceryList');
+                createCheckboxes(document.getElementById('ingredientslist').children[key].id, document.getElementById(document.getElementById('ingredientslist').children[key].id + "number").value, false, 'groceryList');
             }
-            theresGroceries = true;
         }
     }
 
     for (var key in document.getElementById('groceryListOverall').children) {
-        if (document.getElementById('groceryListOverall').children[key].id == "removeButton" && document.getElementById('groceryListOverall').children[key].id == "selectAllGroceriesButton" && 
+        if (document.getElementById('groceryListOverall').children[key].id == "removeButton" || document.getElementById('groceryListOverall').children[key].id == "selectAllGroceriesButton" || 
             document.getElementById('groceryListOverall').children[key].id == "deselectAllGroceriesButton") {
             thereAreButtons = true;
         }

@@ -9,7 +9,7 @@
 <script src="cooking-info.js"></script>
 <link rel="stylesheet" href="css/RecipeBookStyleSheet.css">
 </head>
-<body onload="testFunction2('Jello Surprise');">
+<body onload="selectRecipe('Southwestern Scramble');">
 
 <h2>Three Unequal Columns</h2>
 
@@ -20,10 +20,10 @@
   </div>
   <div class="column" id="recipeNamesOverall" style="background-color:#bbb;">
       <div class="btn-group" id="recipeNames">
-    <input type="button" id="Jello Surprise" value="Jello Surprise" onclick="testFunction2('Jello Surprise'); ">
-    <input type="button" id="Devilish Eggs" value="Devilish Eggs" onclick="testFunction2('Devilish Eggs'); ">
-    <input type="button" id="Gorgo" value="Gorgo" onclick="testFunction2('Gorgo'); ">
-    <input type="button" id="splimpo" value="splimpo" onclick="testFunction2('splimpo'); ">
+    <input type="button" id="Southwestern Scramble" value="Southwestern Scramble" onclick="selectRecipe('Southwestern Scramble'); ">
+    <input type="button" id="Thai-Inspired Salad Bowl" value="Thai-Inspired Salad Bowl" onclick="selectRecipe('Thai-Inspired Salad Bowl'); ">
+    <input type="button" id="Gorgo" value="Gorgo" onclick="selectRecipe('Gorgo'); ">
+    <input type="button" id="splimpo" value="splimpo" onclick="selectRecipe('splimpo'); ">
     </div>
   </div>
   <div class="column" id="groceryListOverall" style="background-color:#ccc;">
@@ -33,9 +33,8 @@
 </div>
   <div class="column right" id="recipeBehaviorOverall" style="background-color:#ccc;">
           <h2 id="recipeHeader">Column 3</h2>
-      <div id="recipeBehavior" style="background-color:#ccc;">
-          </div>
-    <p>Some text..</p>
+      <p id="recipeBehavior" style="background-color:#ccc;">
+          </p>
   </div>
 
   <div id="stupidplaceholder">
