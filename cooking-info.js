@@ -119,7 +119,7 @@ function createCheckboxes(theID, theNum, theValue, theOverallID) {
     var label = document.createElement('label')
     label.htmlFor = theID;
     label.id = theID + "label";
-    label.appendChild(document.createTextNode(theID));
+    label.appendChild(document.createTextNode(" " + theID));
 
     if (theOverallID == "groceryList") {
 
@@ -133,7 +133,7 @@ function createCheckboxes(theID, theNum, theValue, theOverallID) {
     else if (theOverallID == "ingredientslist") {
         var numberOfIngredient = document.createElement('label');
         if (theNum != null) {
-            numberOfIngredient.innerHTML = theNum + " ";
+            numberOfIngredient.innerHTML = theNum;
         }
         numberOfIngredient.id = theID + 'number';
     }
@@ -256,7 +256,7 @@ function onAddToListBtnClicked() {
                 theresGroceries = true;
             }
             if (document.getElementById('ingredientslist').children[key].checked == true && !isHoldover) {
-                createCheckboxes(document.getElementById('ingredientslist').children[key].id, document.getElementById(document.getElementById('ingredientslist').children[key].id + "number").value, false, 'groceryList');
+                createCheckboxes(document.getElementById('ingredientslist').children[key].id, Number(document.getElementById(document.getElementById('ingredientslist').children[key].id + "number").innerHTML), false, 'groceryList');
             }
         }
     }
