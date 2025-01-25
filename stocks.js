@@ -1,8 +1,10 @@
-let curStockPrices = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let curStockPrices = [0, 0, 0, 0, 0, 0, 0, 0, 0, -1];
 let yourMoney = 1000;
 let yourStock = 0;
 let frameForMurderModifier = 1;
 let unrealisticOutlookModifier = 1;
+let prevStockPrice = -1000;
+let theStockPrice = -1;
 function doTheLine(newLine) {
     clearCanvas();
     const c = document.getElementById("myCanvas");
@@ -11,6 +13,14 @@ function doTheLine(newLine) {
     var minCeiled = Math.ceil(0);
     var maxFloored = Math.floor(150);
     var theStockPrice = Math.floor((Math.random() * (maxFloored - minCeiled + 1) + minCeiled) * frameForMurderModifier * unrealisticOutlookModifier);
+    if (curStockPrices[curStockPrices.length - 1] > 0) {
+        var x = 0;
+        while (x < 5 || theStockPrice < curStockPrices[curStockPrices.length - 1] - 40 || theStockPrice > curStockPrices[curStockPrices.length - 1] + 40) {
+            theStockPrice = Math.floor((Math.random() * (maxFloored - minCeiled + 1) + minCeiled) * frameForMurderModifier * unrealisticOutlookModifier);
+            x++;
+        }
+    }
+    
     var whereAreWe = 0;
     if (newLine == true) {
         ctx.beginPath();
@@ -26,7 +36,7 @@ function doTheLine(newLine) {
     }
     else {
         ctx.beginPath();
-        ctx.moveTo(0, curStockPrices[0]);
+        ctx.moveTo(0, 150 - curStockPrices[0]);
         for (i = 0; i < curStockPrices.length; i++) {
             if (i == curStockPrices.length - 1) {
                 curStockPrices[i] = theStockPrice;
