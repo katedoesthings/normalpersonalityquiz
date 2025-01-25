@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+</style>
+<script src="stocks.js"></script>
+<link rel="stylesheet" href="css/RecipeBookStyleSheet.css">
+</head>
+<body onload="doTheLine(true);">
+
+<h2 id="yuh">yuh</h2>
+<h2 id="yourMoney">$1000</h2>
+<h2 id="yourStock">You have: 0 stock</h2>
+<p id="framedForMurder"></p>
+<p id="unrealisticOutlook"></p>
+<button type="button" onclick="buyStock()">Buy Stock</button>
+<button type="button" onclick="sellStock()">Sell Stock</button>
+<button type="button" onclick="setModifier(500, false, .5, 'framedForMurderModifier')">Frame CEO for Murder ($500)</button>
+<button type="button" onclick="setModifier(500, false, 1.5, 'unrealisticOutlookModifier')">Circulate Fake Company Earnings Report ($500)</button>
+
+<canvas id="myCanvas" width="300" height="200" style="border:1px solid grey"></canvas>
+
+</body>
+</html>
