@@ -28,6 +28,14 @@ let theStocks = [
         "curPrice": -1,
         "element": "chimpcorp",
     },
+
+    {
+    "name": "It's Just The Moon",
+    "stockPrices": [0, 0, 0, 0, 0, 0, 0, 0, 0, -1],
+    "color": [0, 102, 204],
+    "curPrice": -1,
+    "element": "themoon",
+    },
 ]
 let yourMoney = 1000;
 let yourStock = 0;
