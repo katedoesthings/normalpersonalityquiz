@@ -10,16 +10,39 @@
 </head>
 <body onload="doTheLine(true);">
 
+<div class="column left">
 <h2 id="pennyworthPrice">yuh</h2>
 <h2 id="dinoCloning">yuh</h2>
-<h2 id="yourMoney">$1000</h2>
-<h2 id="yourStock">You have: 0 stock</h2>
+<h2 id="eggulon">yuh</h2>
+<h2 id="chimpcorp">yuh</h2>
+<h2 id="themoon">yuh</h2>
+</div>
+<div class="column right" style="background-color:LIGHTGREEN;">
+<h2 id="yourMoney">$3000</h2>
+<h2 id="PWBCurStock">You have: 0 PWB stock</h2>
+<h2 id="DINOCurStock">You have: 0 DINO stock</h2>
+<h2 id="CHMPCurStock">You have: 0 CHMP stock</h2>
+<h2 id="MOONCurStock">You have: 0 MOON stock</h2>
 <p id="framedForMurder"></p>
 <p id="unrealisticOutlook"></p>
-<button type="button" onclick="buyStock()">Buy Stock</button>
-<button type="button" onclick="sellStock()">Sell Stock</button>
-<button type="button" onclick="setModifier(500, false, .5, 'framedForMurderModifier', 8000)">Frame CEO for Murder ($500)</button>
-<button type="button" onclick="setModifier(500, false, 1.5, 'unrealisticOutlookModifier', 8000)">Circulate Fake Company Earnings Report ($500)</button>
+<button type="button" onclick="buyStock('PWB')">Buy PWB Stock</button>
+<button type="button" onclick="sellStock('PWB')">Sell PWB Stock</button>
+<br>
+<button type="button" onclick="buyStock('DINO')">Buy DINO Stock</button>
+<button type="button" onclick="sellStock('DINO')">Sell DINO Stock</button>
+<br>
+<button type="button" onclick="buyStock('EGG')">Buy EGG Stock</button>
+<button type="button" onclick="sellStock('EGG')">Sell EGG Stock</button>
+<br>
+<button type="button" onclick="buyStock('CHMP')">Buy CHMP Stock</button>
+<button type="button" onclick="sellStock('CHMP')">Sell CHMP Stock</button>
+<br>
+<button type="button" onclick="buyStock('MOON')">Buy MOON Stock</button>
+<button type="button" onclick="sellStock('MOON')">Sell MOON Stock</button>
+<br>
+<button type="button" id="DINODownButton" onclick="setModifier('DINO', 500, false, .75, 'framedForMurderModifier', 8000)">Frame DINO CEO for Murder ($500)</button>
+<button type="button" id="DINOUpButton" onclick="setModifier('DINO', 500, false, 1.20, 'unrealisticOutlookModifier', 8000)">Circulate Fake DINO Company Earnings Report ($500)</button>
+</div>
 
 <canvas id="myCanvas" width="300" height="200" style="border:1px solid grey"></canvas>
 
