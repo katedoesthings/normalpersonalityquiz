@@ -2,7 +2,7 @@
 let theRecipes = [
     {
         "name": "Southwestern Scramble",
-        "ingredients": ["Ground Chicken", "Kale", "Lemon Juice", "Soy Sauce", "Salt", "Frozen Corn", "Smoked Paprika", "Adobo", "Onion Powder", "Garlic Powder", "Red Bell Pepper", "Gold Potato", "Tomatillo Salsa"],
+        "ingredients": ["Ground Chicken", "Kale", "Lemon Juice", "Soy Sauce", "Salt", "Corn", "Smoked Paprika", "Adobo", "Onion Powder", "Garlic Powder", "Red Bell Pepper", "Gold Potato", "Tomatillo Salsa"],
         "numIngredients": [1, 1, 2, 2, null, 1, null, null, null, null, 2, 3, 1],
         "units": ["lb", "large bag", "tbsp", "tbsp", null, "large bag", null, null, null, null, null, "medium", "jar"],
         "recipe": "1. Preheat the oven to 425F and slice the bell pepper into medium strips (about half the width of your finger). Place the bell pepper on a baking sheet lined with parchment paper or tinfoil and drizzle heavily with olive oil. Season with the adobo, onion powder, garlic powder, and smoked paprika and bake until tender, about 15 mins. <br><br>" +
@@ -67,6 +67,49 @@ let theRecipes = [
             "4. Heat a pan and grease it with butter. Place the sandwich in the pan. When one side is crispy, take the sandwich off of the pan, re-grease the pan with more butter, then return the sandwich to the pan, crispy side up. <br><br>" +
             "5. Once both sides are crispy to your liking, remove from heat and enjoy! <br><br>" +
             "Also, you don't need to use butter, but that's my preferred grease for making sandwiches crispy."
+    },
+    {
+        "name": "Pumpkin Soup",
+        "ingredients": ["Butter Beans", "White Onion", "Garlic", "Sage", "Thyme", "Pumpkin Puree", "Milk", "Cashews", "Nutritional Yeast", "Tahini", "Tomato Paste", "Lemon Juice", "Salt", "Pepper"],
+        "numIngredients": [2, 1, 4, 2, 1, 1, 1, .33, .25, 2, 2, 2, null, null],
+        "units": ["can", null, "clove", "tsp", "tsp", "cup", "cup", "cup", "cup", "tbsp", "tsp", "tbsp", null, null],
+        "recipe": "This is from someone on instagram reels but I transcribed it ages ago so I don't know who it is. Oops. Also the milk can be any non-dairy milk. Dried sage and thyme are also fine, just add some more.<br><br>" +
+            "1. Soak the cashews in hot water for 10 minutes. Do the next step while they're soaking. <br><br>" +
+            "2. Roughly chop onion and saute with a neutral oil until soft. When soft, add garlic and herbs and saute until garlic is fragrant.<br><br>" +
+            "3. Add pumpkin puree, milk, cashews, nutritional yest, tahini, tomato paste, and lemon juice. Stir and use immersion or regular blender until creamy.<br><br>" +
+            "4. Add butter beans and heat through. <br><br>" +
+            "Serve with a crusty bread of your choosing. <br><br>"
+    },
+    {
+        "name": "Beef Stroganoff",
+        "ingredients": ["Ground Beef", "Butter", "White Onion", "Cremini Mushrooms", "Garlic", "Flour", "Beef Broth", "Heavy Whipping Cream", "Sour Cream", "Worcestershire Sauce", "Dijon Mustard", "Salt", "Black Pepper", "Egg Noodles"],
+        "numIngredients": [1,2,1,.5,2,1,1,.75,.25,1,1,null, null, 12],
+        "units": ["lb","tbsp",null,"lb","clove","tbsp","cup","cup","cup","tbsp","tsp",null, null, "oz"],
+        "recipe": "You know it from anime and manga. And also Natasha's Kitchen. Fiona prefers this with ground beef, so that's what I'm using here, but sliced beef works too. So does chicken. Also dairy free heavy cream and sour cream works here. The butter is kind of necessary, I think.<br><br>" +
+            "1. Cook ground beef in a deep pan, seasoned with salt and pepper. Choose your pan wisely--you will use this for the rest of your stroganoff. At the same time, prepare the egg noodles as listed on their packaging.<br><br>" + 
+            "2. Roughly chop onions and slice mushrooms. <br><br>" +
+            "3. Remove beef from pan and set aside. Add onions, mushrooms, and butter. Saute until onions and mushrooms are soft and lightly browned. <br><br>" +
+            "4. Mince garlic, add it to the pan, and saute until fragrant. <br><br>" +
+            "5. Add flour and saute another minute. Stir constantly during this step! <br><br>" + 
+            "6. Add broth and whipping cream, and simmer for 1-2 minutes until slightly thickened. <br><br>" +
+            "7. Measure out your sour cream in bowl or cup and add some tablespoons of your hot pan concoction to the sour cream to temper it. Add more than you think you need, you don't want the cream to curdle! <br><br>" +
+            "8. Add the tempered sour cream to the pan, stirring constantly. <br><br>" +
+            "9. Stir in Worcestershire, musterd, and season to taste with salt and pepper. Simmer until sauce is creamy and thick, though it may not fully thicken until it cools. Add beef back to the sauce and heat through. <br><br>" +
+            "Serve over egg noodles. I have had no problem storing the sauce and noodles together, but if you're someone who minds a floppier noodle, you may want to store them separately."
+    },
+    {
+        "name": "Chilaquiles",
+        "ingredients": ["Tomatillo Salsa", "Tortilla Chips", "Egg", "Avocado", "Corn", "Red Bell Pepper", "Smoked Paprika", "Adobo", "Onion Powder", "Garlic Powder"],
+        "numIngredients": [1, 1, 8, 4, 1, 1, null, null, null, null],
+        "units": ["jar", "bag", null, "large bag", null, null, null, null],
+        "recipe": "You can also add whatever other vegetables you want. Also, the quantities here yield about 8 servings. <br><br>" +
+            "1. Prepare the frozen corn by adding it to a pan with a neutral oil and seasoning it with adobo, onion powder, garlic powder, and smoked paprika.Stir frequently once the corn is defrosted to prevent burning, and cook until the corn shows signs of crispiness.<br><br>" +
+            "2. Dice the red bell pepper and dice the avocado. I find half an avocado and a small handful of red bell pepper per serving of chilaquiles is good. <br><br>" +
+            "3. Scramble or fry an egg with desired seasonings. <br><br>" +
+            "4. Pour about 1/4 a cup of salsa into a pan (can be the same one you used for the egg) and heat through. Don't burn it! Once heated through, add a heaping handful of tortilla chips and stir to coat with salsa. <br><br>" +
+            "5. Remove the tortilla chips after about 20 seconds if you want them to still be a little crispy. Otherwise, leave in to your desired chip floppiness. <br><br>" +
+            "6. When tortilla chips are on a plate, add bell pepper, avocado, a heaping spoonful of corn, and the egg. <br><br>" +
+            "It is highly, highly recommended that you serve these chilaquiles with the cilantro lime crema also found on this list. I never make them without it."
     },
     {
         "name": "",
